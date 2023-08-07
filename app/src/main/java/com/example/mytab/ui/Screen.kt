@@ -68,7 +68,7 @@ fun Screen() {
         // Show the content based on the selected tab
         when (selectedTabIndex) {
             0 -> Tab1Content(customObject, widget1State, widget2State, viewModel)
-            1 -> Tab2Content(widget2State, viewModel)
+            1 -> Tab2Content(customObject, widget2State, viewModel)
         }
     }
 }
@@ -96,7 +96,7 @@ fun Tab1Content(
             maxValue = 10f,
             step = 0.1f,
             value = customObject.characteristic3,
-            onValueChange = { viewModel.onCharacteristic3Change(it) },
+            onValueChange = { viewModel.onCharacteristic3Change(it)},
             enabled = widget2State == Widget2State.OFF
         )
     }
@@ -104,6 +104,7 @@ fun Tab1Content(
 
 @Composable
 fun Tab2Content(
+    customObject: DataUIState,
     widget2State: Widget2State,
     viewModel: DataViewModel
 ) {
@@ -119,10 +120,10 @@ fun Tab2Content(
                 minValue = 0f,
                 maxValue = 10f,
                 step = 1f,
-                value1 = 0f,
-                value2 = 1f,
-                onValueChange1 = {},
-                onValueChange2 = {},
+                value1 = customObject.characteristic4,
+                value2 = customObject.characteristic5,
+                onValueChange1 = { viewModel.onCharacteristic4Change(it)},
+                onValueChange2 = { viewModel.onCharacteristic5Change(it)},
                 enabled = true
             )
             Spacer(modifier = Modifier.height(16.dp))
