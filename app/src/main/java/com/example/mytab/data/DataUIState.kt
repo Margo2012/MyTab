@@ -1,6 +1,6 @@
 package com.example.mytab.data
 
-data class DataObject(
+data class DataUIState(
     var characteristic1: Float = 0f,
     var characteristic2: Boolean = false,
     var characteristic3: Float = 0f,
